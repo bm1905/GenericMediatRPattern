@@ -1,4 +1,4 @@
-﻿namespace MediatRPattern.Query.PaymentService
+﻿namespace GenericMediatRPattern.PaymentService.Query
 {
     public class PaymentManagerGetHandlerResponse<T>
     {

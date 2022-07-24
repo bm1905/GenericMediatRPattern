@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MediatRPattern.Data
+namespace GenericMediatRPattern.Data
 {
     public class Database
     {

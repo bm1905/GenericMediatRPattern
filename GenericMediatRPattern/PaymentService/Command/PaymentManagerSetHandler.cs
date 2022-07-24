@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using GenericMediatRPattern.PaymentManager;
 using MediatR;
-using MediatRPattern.PaymentManager;
 
-namespace MediatRPattern.Command.PaymentService
+namespace GenericMediatRPattern.PaymentService.Command
 {
     public class PaymentManagerSetHandler<T> : IRequestHandler<PaymentManagerSetHandlerRequest<T>, PaymentManagerSetHandlerResponse>
     {

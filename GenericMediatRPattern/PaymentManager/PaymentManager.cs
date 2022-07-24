@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using MediatRPattern.Data;
+using GenericMediatRPattern.Data;
 using Newtonsoft.Json;
 
-namespace MediatRPattern.PaymentManager
+namespace GenericMediatRPattern.PaymentManager
 {
     public class PaymentManager<TEntity> : IPaymentManager<TEntity>
     {

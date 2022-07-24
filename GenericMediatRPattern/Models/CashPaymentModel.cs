@@ -1,4 +1,4 @@
-﻿namespace MediatRPattern.Models
+﻿namespace GenericMediatRPattern.Models
 {
     public class CashPaymentModel
     {

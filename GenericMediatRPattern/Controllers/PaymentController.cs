@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using GenericMediatRPattern.Models;
+using GenericMediatRPattern.PaymentService.Command;
+using GenericMediatRPattern.PaymentService.Query;
 using MediatR;
-using MediatRPattern.Models;
-using MediatRPattern.Query.PaymentService;
-using MediatRPattern.Command.PaymentService;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MediatRPattern.Controllers
+namespace GenericMediatRPattern.Controllers
 {
     [ApiController]
     [Route("[controller]")]

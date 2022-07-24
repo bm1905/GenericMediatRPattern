@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace MediatRPattern.PaymentManager
+namespace GenericMediatRPattern.PaymentManager
 {
     public interface IPaymentManager<TEntity>
     {

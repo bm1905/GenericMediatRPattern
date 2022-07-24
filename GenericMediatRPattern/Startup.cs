@@ -1,9 +1,9 @@
-﻿using MediatR;
-using MediatRPattern.Command.PaymentService;
-using MediatRPattern.Data;
-using MediatRPattern.Models;
-using MediatRPattern.PaymentManager;
-using MediatRPattern.Query.PaymentService;
+﻿using GenericMediatRPattern.Data;
+using GenericMediatRPattern.Models;
+using GenericMediatRPattern.PaymentManager;
+using GenericMediatRPattern.PaymentService.Command;
+using GenericMediatRPattern.PaymentService.Query;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace MediatRPattern
+namespace GenericMediatRPattern
 {
     public class Startup
     {

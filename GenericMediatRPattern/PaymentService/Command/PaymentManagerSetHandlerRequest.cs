@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace MediatRPattern.Command.PaymentService
+namespace GenericMediatRPattern.PaymentService.Command
 {
     public class PaymentManagerSetHandlerRequest<T> : IRequest<PaymentManagerSetHandlerResponse>
     {

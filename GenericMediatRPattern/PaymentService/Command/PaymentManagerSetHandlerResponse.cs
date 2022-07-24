@@ -1,4 +1,4 @@
-﻿namespace MediatRPattern.Command.PaymentService
+﻿namespace GenericMediatRPattern.PaymentService.Command
 {
     public class PaymentManagerSetHandlerResponse
     {

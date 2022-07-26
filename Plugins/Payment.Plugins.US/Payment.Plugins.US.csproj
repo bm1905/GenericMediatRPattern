@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /E /Y &quot;$(OutDir)&quot; &quot;$(SolutionDir)GenericMediatRPattern\bin\$(ConfigurationName)\net6.0\plugins\$(ProjectName)\&quot;" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1">
+      <ExcludeAssets>runtime</ExcludeAssets>  
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\GenericMediatRPattern\GenericMediatRPattern.csproj">
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <PrivateAssets>false</PrivateAssets>
+      <Private>false</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>

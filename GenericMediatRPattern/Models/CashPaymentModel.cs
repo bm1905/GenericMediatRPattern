@@ -1,8 +1,11 @@
 ﻿namespace GenericMediatRPattern.Models
 {
-    public class CashPaymentModel
+    public class CashPaymentModel : LocaleModel
     {
-        public int TotalCount { get; set; }
-        public decimal Amount { get; set; }
+        public int TotalBillCount { get; set; }
+        public decimal TotalAmount { get; set; }
+        public string PaymentBy { get; set; }
+        public string PaymentFor { get; set; }
+        public string Notes { get; set; }
     }
 }

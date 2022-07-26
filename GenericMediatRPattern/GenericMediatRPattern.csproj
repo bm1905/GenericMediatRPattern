@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
 
@@ -29,11 +29,8 @@
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="PaymentManager\" />
-    <Folder Include="PaymentService\" />
     <Folder Include="Data\" />
     <Folder Include="PaymentService\Command\" />
-    <Folder Include="PaymentService\Query\" />
   </ItemGroup>
 </Project>

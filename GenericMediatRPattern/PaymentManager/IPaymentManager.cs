@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GenericMediatRPattern.PaymentManager
 {
@@ -6,5 +7,6 @@ namespace GenericMediatRPattern.PaymentManager
     {
         Task<bool> SetPayment(string key, TEntity entityModel);
         Task<TEntity> GetPayment(string key);
+        Task<List<TEntity>> GetAllPayments();
     }
 }

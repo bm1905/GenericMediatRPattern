@@ -1,8 +1,10 @@
-﻿using GenericMediatRPattern.Data;
+﻿using System.Collections.Generic;
+using GenericMediatRPattern.Data;
 using GenericMediatRPattern.Models;
 using GenericMediatRPattern.PaymentManager;
 using GenericMediatRPattern.PaymentService.Command;
 using GenericMediatRPattern.PaymentService.Query;
+using GenericMediatRPattern.PluginHandler;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,8 +32,9 @@ namespace GenericMediatRPattern
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
             services.AddMediatR(typeof(Startup));
-            services.AddSingleton<Database>();
+            services.AddMediatR(typeof(PluginFactory).Assembly);
 
+            services.AddSingleton<Database>();
             services.AddTransient<IRequestHandler<PaymentManagerSetHandlerRequest<CashPaymentModel>, PaymentManagerSetHandlerResponse>,
                 PaymentManagerSetHandler<CashPaymentModel>>();
             services.AddTransient<IRequestHandler<PaymentManagerSetHandlerRequest<CheckPaymentModel>, PaymentManagerSetHandlerResponse>,
@@ -40,8 +43,18 @@ namespace GenericMediatRPattern
                 PaymentManagerGetHandler<CashPaymentModel>>();
             services.AddTransient<IRequestHandler<PaymentManagerGetHandlerRequest<CheckPaymentModel>, PaymentManagerGetHandlerResponse<CheckPaymentModel>>,
                 PaymentManagerGetHandler<CheckPaymentModel>>();
-
+            services.AddTransient<IRequestHandler<PaymentManagerGetAllHandlerRequest<CashPaymentModel>, List<PaymentManagerGetHandlerResponse<CashPaymentModel>>>,
+                PaymentManagerGetAllHandler<CashPaymentModel>>();
+            services.AddTransient<IRequestHandler<PaymentManagerGetAllHandlerRequest<CheckPaymentModel>, List<PaymentManagerGetHandlerResponse<CheckPaymentModel>>>,
+                PaymentManagerGetAllHandler<CheckPaymentModel>>();
             services.AddScoped(typeof(IPaymentManager<>), typeof(PaymentManager<>));
+            services.AddSingleton(sp =>
+            {
+                var configuration = sp.GetRequiredService<IConfiguration>();
+                var pluginFactory = new PluginFactory(configuration);
+                pluginFactory.Initialize();
+                return pluginFactory;
+            });
             services.AddControllers();
         }
 

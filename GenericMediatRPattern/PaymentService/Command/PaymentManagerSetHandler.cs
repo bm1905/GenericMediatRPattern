@@ -7,9 +7,9 @@ namespace GenericMediatRPattern.PaymentService.Command
 {
     public class PaymentManagerSetHandler<T> : IRequestHandler<PaymentManagerSetHandlerRequest<T>, PaymentManagerSetHandlerResponse>
     {
-        private readonly IPaymentManager<T> _paymentManager;
+        private readonly IPaymentManager _paymentManager;
 
-        public PaymentManagerSetHandler(IPaymentManager<T> paymentManager)
+        public PaymentManagerSetHandler(IPaymentManager paymentManager)
         {
             _paymentManager = paymentManager;
         }

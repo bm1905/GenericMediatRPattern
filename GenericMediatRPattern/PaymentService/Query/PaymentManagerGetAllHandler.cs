@@ -8,16 +8,16 @@ namespace GenericMediatRPattern.PaymentService.Query
 {
     public class PaymentManagerGetAllHandler<T> : IRequestHandler<PaymentManagerGetAllHandlerRequest<T>, List<PaymentManagerGetHandlerResponse<T>>>
     {
-        private readonly IPaymentManager<T> _model;
+        private readonly IPaymentManager _model;
 
-        public PaymentManagerGetAllHandler(IPaymentManager<T> model)
+        public PaymentManagerGetAllHandler(IPaymentManager model)
         {
             _model = model;
         }
 
         public async Task<List<PaymentManagerGetHandlerResponse<T>>> Handle(PaymentManagerGetAllHandlerRequest<T> request, CancellationToken cancellationToken)
         {
-            var responses = await _model.GetAllPayments();
+            var responses = await _model.GetAllPayments<T>();
             List<PaymentManagerGetHandlerResponse<T>> response = new List<PaymentManagerGetHandlerResponse<T>>();
             foreach (var model in responses)
             {

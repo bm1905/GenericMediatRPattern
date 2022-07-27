@@ -47,7 +47,7 @@ namespace GenericMediatRPattern
                 PaymentManagerGetAllHandler<CashPaymentModel>>();
             services.AddTransient<IRequestHandler<PaymentManagerGetAllHandlerRequest<CheckPaymentModel>, List<PaymentManagerGetHandlerResponse<CheckPaymentModel>>>,
                 PaymentManagerGetAllHandler<CheckPaymentModel>>();
-            services.AddScoped(typeof(IPaymentManager<>), typeof(PaymentManager<>));
+            services.AddScoped<IPaymentManager, PaymentManager.PaymentManager>();
             services.AddSingleton(sp =>
             {
                 var configuration = sp.GetRequiredService<IConfiguration>();

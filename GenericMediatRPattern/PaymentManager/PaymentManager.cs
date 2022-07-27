@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace GenericMediatRPattern.PaymentManager
 {
-    public class PaymentManager<TEntity> : IPaymentManager<TEntity>
+    public class PaymentManager : IPaymentManager
     {
         private readonly Database _database;
 
@@ -14,7 +14,7 @@ namespace GenericMediatRPattern.PaymentManager
             _database = database;
         }
 
-        public async Task<List<TEntity>> GetAllPayments()
+        public async Task<List<TEntity>> GetAllPayments<TEntity>()
         {
             List<TEntity> entities = new List<TEntity>();
             foreach (var data in _database.Data)
@@ -27,7 +27,7 @@ namespace GenericMediatRPattern.PaymentManager
             return entities;
         }
 
-        public async Task<TEntity> GetPayment(string paymentKey)
+        public async Task<TEntity> GetPayment<TEntity>(string paymentKey)
         {
             if (!_database.Data.ContainsKey(paymentKey)) return default;
 
@@ -38,7 +38,7 @@ namespace GenericMediatRPattern.PaymentManager
 
         }
 
-        public async Task<bool> SetPayment(string key, TEntity entityModel)
+        public async Task<bool> SetPayment<TEntity>(string key, TEntity entityModel)
         {
             var model = JsonConvert.SerializeObject(entityModel);
             _database.Data.Add(key, model);

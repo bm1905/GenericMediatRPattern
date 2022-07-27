@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 
 namespace GenericMediatRPattern.PaymentManager
 {
-    public interface IPaymentManager<TEntity>
+    public interface IPaymentManager
     {
-        Task<bool> SetPayment(string key, TEntity entityModel);
-        Task<TEntity> GetPayment(string key);
-        Task<List<TEntity>> GetAllPayments();
+        Task<bool> SetPayment<TEntity>(string key, TEntity entityModel);
+        Task<TEntity> GetPayment<TEntity>(string key);
+        Task<List<TEntity>> GetAllPayments<TEntity>();
     }
 }
